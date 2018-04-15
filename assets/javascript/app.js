@@ -21,5 +21,24 @@ for (var i = 0; i < topics.length; i++) {
   });
 
 
-  var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=qENDlgCU7sKs2b61knLcGfykWxz1Osrs&limit=5");
-xhr.done(function(data) { console.log("success got data", data); });
+//   var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=qENDlgCU7sKs2b61knLcGfykWxz1Osrs&limit=5");
+// xhr.done(function(data) { console.log("success got data", data); });
+
+function displayTopicInfo() {
+
+    // var stuff = $(this).attr("data-name");
+    var stuff = "music"
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q= " + stuff + "&api_key=qENDlgCU7sKs2b61knLcGfykWxz1Osrs&limit=5";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+        console.log("success got data", response);
+    //   $("#topic-buttons").text(JSON.stringify(response));
+    //   renderButtons();
+    });
+  }
+  displayTopicInfo()
+  // Function for displaying movie data
+//   function renderButtons() {
