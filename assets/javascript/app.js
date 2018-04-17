@@ -61,11 +61,11 @@ renderButtons()
         // Calling renderButtons which handles the processing of our movie array
         renderButtons();
         displayTopicInfo()
-        
+        $("#topic-input").val("");
       });
 // function to empty out the articles
 // function clear() {
-    $("#topic-input").empty();
+    
 //   }
     //------------------------------------------------------------------------------------------------------
    
@@ -92,7 +92,7 @@ renderButtons()
                     // Only taking action if the photo has an appropriate rating
                     if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
                         // Creating a div with the class "item"
-                        var gifDiv = $("<div class='item'>");
+                        var gifDiv = $("<div class='item floating-box'>");
 
                         // Storing the result item's rating
                         var rating = results[i].rating;

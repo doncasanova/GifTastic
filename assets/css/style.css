@@ -3,3 +3,9 @@
     color: blue;
     background-color: black;
 }
+
+.floating-box {
+    display: inline-block;
+    margin: 10px;
+
+}
