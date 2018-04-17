@@ -3,8 +3,11 @@ var topics = ["gardening", "music", "cars"]
 var still = "still"
 var stuff;
 //using a loop create buttons
+function renderButtons() {
+    $("#topic-buttons").empty();
 for (var i = 0; i < topics.length; i++) {
 
+   
     // Then dynamically generating buttons for each movie in the array
     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
     var a = $("<button>");
@@ -17,13 +20,17 @@ for (var i = 0; i < topics.length; i++) {
     // Adding the button to the buttons-view div
     $("#topic-buttons").append(a);
 }
+}
+renderButtons()
+//----------------------------------------------------------------------------------------------------
+// changes state of gif to and from sill to animate
     function dataState() {
 
     $(".gif").on("click", function () {
 
         // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
         var state = $(this).attr("data-state");
-        console.log(state + " still or animated")
+        // console.log(state + " still or animated")
         // If the clicked image's state is still, update its src attribute to what its data-animate value is.
         // Then, set the image's data-state to animate
         // Else set src to the data-still value
@@ -38,20 +45,34 @@ for (var i = 0; i < topics.length; i++) {
 
     });
     }
-
-
     //------------------------------------------------------------------------------------------------------
-    //runs displayTopicInfo
+    //adds new button
 
+    $("#add-topic").on("click", function(event) {
+        event.preventDefault();
+        
+        // This line grabs the input from the textbox
+        var topic = $("#topic-input").val().trim();
 
-
-
-
+        // Adding the movie from the textbox to our array
+        topics.push(topic);
+        console.log(topics);
+        
+        // Calling renderButtons which handles the processing of our movie array
+        renderButtons();
+        displayTopicInfo()
+        
+      });
+// function to empty out the articles
+// function clear() {
+    $("#topic-input").empty();
+//   }
+    //------------------------------------------------------------------------------------------------------
+   
     displayTopicInfo()
-
-
     function displayTopicInfo() {
         $("button").on("click", function (event) {
+          
             var stuff = $(this).attr("data-name");
 
             $("#gifs-appear-here").empty();
@@ -63,17 +84,8 @@ for (var i = 0; i < topics.length; i++) {
             }).then(function (response) {
 
                 var results = response.data;
-                console.log(response);
-                //   $("#topic-buttons").text(JSON.stringify(response));
-                //   renderButtons();
-
-                // }
-
-                // .then(function (response) {
-                // Storing an array of results in the results variable
-
-
-                // displayTopicInfo()
+            
+           
                 // Looping over every result item
                 for (var i = 0; i < results.length; i++) {
 
@@ -101,10 +113,6 @@ for (var i = 0; i < topics.length; i++) {
                         topicsImage.attr("data-still", results[i].images.fixed_height_still.url,);
                         topicsImage.attr("data-animate", results[i].images.fixed_height.url, "data-state", still);
 
-                        //  response.data[i].images.fixed_height_still.url;
-            //    imageUrlAnimate = response.data[i].images.fixed_height.url;
-                        // Adding a data-attribute
-                        // topicsImage.attr("data-still", still);
                         // Appending the paragraph and personImage we created to the "gifDiv" div we created
                         gifDiv.append(p);
                         gifDiv.append(topicsImage);
@@ -112,6 +120,8 @@ for (var i = 0; i < topics.length; i++) {
                         // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
                         $("#gifs-appear-here").prepend(gifDiv);
                         dataState()
+                   
+                        
                     }
 
                 }
