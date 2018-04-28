@@ -12,23 +12,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:100,100i" rel="stylesheet">
-    <link rel="stylesheet" href="assets\css\reset.css">
+    <!-- <link rel="stylesheet" href="assets\css\reset.css"> -->
     <link rel="stylesheet" href="assets\css\style.css">
 </head>
 
-<body class="bg-success ">
-    <div class="row justify-content-center">
-        <div class="col-4 ">
+<body class=" new-stuff">
+    <div class="jumbotron  ">
+        <div class="row justify-content-center">
+            <h1 class="display-4">Hello, This Is Giphy Tastic</h1>
+        </div>
+        <div class="row justify-content-center">
+            <p class="lead">Click on a button to see pictures appear then click on the picture to see it dance. </p>
+        </div>
+        <hr class="my-4">
+        <div class="row  justify-content-center">
             <div id="topic-buttons"></div>
         </div>
+    </div>
+    <div class="row justify-content-center">
         <form id="topic-form">
-            <label for="topic-input">Add a Topic </label>
-            <input type="text" id="topic-input"><br>
-      
+            <label class = "label-text-color" for="topic-input"> Make new button of your choice </label>
+            <input type="text" id="topic-input">
             <!-- Button triggers new movie to be added -->
-            <input id="add-topic" type="submit" value="Add a Topic">
-          </form>
-    </div >
+            <input id="add-topic" type="submit" value="enter">
+        </form>
+    </div>
     <div id="gifs-appear-here">
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

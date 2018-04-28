@@ -9,3 +9,14 @@
     margin: 10px;
 
 }
+img {
+    border-radius: 8px;
+}
+
+.new-stuff{
+    background-color: black;
+}
+.label-text-color{
+
+    color : white;
+}
